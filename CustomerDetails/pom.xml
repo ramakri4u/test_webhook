@@ -66,7 +66,7 @@
 	              <repository>
                          <id>github</id>
                          <name>Internal Releases</name>
-                         <url>https://maven.pkg.github.com/ramakri4u/test_webhook</url>
+                         <url>https://maven.pkg.github.com/ramakri4u/test_webhook/CustomerDetails</url>
 	                 <type>pom</type>
                         </repository>
 		</dependency>
