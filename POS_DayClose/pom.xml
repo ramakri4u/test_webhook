@@ -48,7 +48,7 @@
 	              <repository>
                          <id>github</id>
                          <name>Internal Releases</name>
-                         <url>https://maven.pkg.github.com/niranjanmaradapu/PointOfSale</url>
+                         <url>https://maven.pkg.github.com/ramakri4u/PointOfSale</url>
 	                 <type>pom</type>
                         </repository>
 		</dependency>
