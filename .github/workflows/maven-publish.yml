@@ -5,7 +5,7 @@ name: Maven-docker-acr-eks-cicd
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   build:
