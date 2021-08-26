@@ -21,6 +21,9 @@ jobs:
           distribution: 'adopt'
           server-id: github
           settings-path: ${{ GITHUB.WORKSPACE }}
+          
+      - name: Setup upterm session
+        uses: lhotari/action-upterm@v1
 
       - name: Build with Maven
         run: |
@@ -41,8 +44,7 @@ jobs:
           name: my-artifact
           path: staging
           
-      - name: Setup upterm session
-        uses: lhotari/action-upterm@v1
+      
           
       
           
