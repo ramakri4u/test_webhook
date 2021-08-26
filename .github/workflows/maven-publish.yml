@@ -24,7 +24,7 @@ jobs:
 
       - name: Build with Maven
         run: |
-          mvn -B package --file POS_DayClose/pom.xml
+          mvn  package --file POS_DayClose/pom.xml
           mkdir staging && cp target/*.war staging
       
       - name: set up a cache for maven
@@ -33,11 +33,15 @@ jobs:
           path: ~/.m2
           key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
-        
+          path: staging
+          
       - name: persist workflow data as artifact
         uses: actions/upload-artifact@v2
         with:
           name: my-artifact
-          path: staging
+      - name: Setup upterm session
+        uses: lhotari/action-upterm@v1
+          
+      
           
           
