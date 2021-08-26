@@ -1,8 +1,9 @@
+ 
 name: Maven-docker-acr-eks-cicd
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   build:
@@ -20,7 +21,21 @@ jobs:
           distribution: 'adopt'
           server-id: github
           settings-path: ${{ GITHUB.WORKSPACE }}
+
+      - name: Build with Maven
+        run: |
+          mvn -B package --file pom.xml
+          mkdir staging && cp target/*.war staging
       
+      - name: set up a cache for maven
+        uses: actions/cache@v2
+        with: 
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
         
-    
-     
+      - name: persist workflow data as artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: my-artifact
+          path: staging
