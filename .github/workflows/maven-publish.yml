@@ -21,10 +21,14 @@ jobs:
           distribution: 'adopt'
           server-id: github
           settings-path: ${{ GITHUB.WORKSPACE }}
-
+      - name: Build CustomerDetails
+        run: |
+          mvn package --file CustomerDetails/pom.xml
+          mkdir staging && cp target/*.war staging
+          
       - name: Build with Maven
         run: |
-          mvn  package --file POS_DayClose/pom.xml
+          mvn package --file POS_DayClose/pom.xml
           mkdir staging && cp target/*.war staging
       
       - name: set up a cache for maven
