@@ -41,19 +41,7 @@
 			<artifactId>postgresql</artifactId>
 			<scope>runtime</scope>
 		</dependency>
-	</dependencies>
-	<distributionManagement>
-		<dependencies>
-                <dependency>
-	              <repository>
-                         <id>github</id>
-                         <name>Internal Releases</name>
-                         <url>https://maven.pkg.github.com/niranjanmaradapu/PointOfSale</url>
-	                 <type>pom</type>
-                        </repository>
-		</dependency>
-                </dependencies>
-	</distributionManagement>	
+	</dependencies>	
 	<build>
 		<plugins>
 			<plugin>
