@@ -21,6 +21,8 @@ jobs:
           distribution: 'adopt'
           server-id: github
           settings-path: ${{ GITHUB.WORKSPACE }}
+          
+/*          
       - name: Build CustomerDetails
         run: |
           mvn package --file CustomerDetails/pom.xml
@@ -44,7 +46,7 @@ jobs:
           name: my-artifact
           path: staging
           
-      
+  */   
           
       
           
