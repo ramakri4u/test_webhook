@@ -26,10 +26,23 @@ jobs:
         server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
         settings-path: ${{ github.workspace }} # location for the settings.xml file
         
-    - name: Build with Maven
-        run:
+     - name: Build with Maven
+        run: |
           mvn -B package --file pom.xml
           mkdir staging && cp target/*.war staging
+      
+      - name: set up a cache for maven
+        uses: actions/cache@v2
+        with: 
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+        
+      - name: persist workflow data as artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: my-artifact
+          path: staging
 
     
 
