@@ -42,6 +42,7 @@
 			<scope>runtime</scope>
 		</dependency>
 	</dependencies>
+	<!--
 	<distributionManagement>
 		<dependencies>
                 <dependency>
@@ -54,6 +55,7 @@
 		</dependency>
                 </dependencies>
 	</distributionManagement>	
+       -->
 	<build>
 		<plugins>
 			<plugin>
