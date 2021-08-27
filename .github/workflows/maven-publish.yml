@@ -25,9 +25,12 @@ jobs:
         with:
           maven-version: 3.8.2
       
-      - name: Install PostgeSQL
-        run: sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list' && wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -  && sudo apt-get update && sudo apt-get -y install postgresql
-
+     # - name: Install PostgeSQL
+     #   run: sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list' && wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -  && sudo apt-get update && sudo apt-get -y install postgresql
+      - uses: harmon758/postgresql-action@v1
+        with:
+          postgresql version: '11'
+          
       - name: Setup tmate session
         uses: mxschmitt/action-tmate@v3
         
