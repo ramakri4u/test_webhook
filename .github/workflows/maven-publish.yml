@@ -28,8 +28,8 @@ jobs:
       - name: Install PostgeSQL
         run: sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list' && wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -  && sudo apt-get update && sudo apt-get -y install postgresql
 
-      - name: Ping to PostgreSQL
-        run: sudo apt-get -y install ping && ping -c 5 localhost -p 5432 
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3
         
       - name: Build with Maven
         run: mvn -B package --file POS_DayClose/pom.xml
