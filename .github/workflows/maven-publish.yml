@@ -23,7 +23,14 @@ jobs:
         uses: stCarolas/setup-maven@v4
         with:
           maven-version: 3.8.2
-      
+          
+      - name: Cache Maven packages
+        uses: actions/cache@v2
+        with:
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          restore-keys: ${{ runner.os }}-m2
+          
      # - name: Install PostgeSQL
      #   run: sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list' && wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -  && sudo apt-get update && sudo apt-get -y install postgresql
      # - uses: harmon758/postgresql-action@v1
@@ -34,11 +41,19 @@ jobs:
      #   uses: mxschmitt/action-tmate@v3
         
       - name: Build with Maven
-        run: mvn -B package --file POS_DayClose/pom.xml -DskipTests
+        run: |
+          mvn -B package --file POS_DayClose/pom.xml -DskipTests
+          mkdir artifacts && cp POS_DayClose/target/*.jar  artifacts
       #- name: Download Artifaction
       #  run: |
       #      POS_DayClose/target/*.war
-           
-
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3  
+            
+      - name: Persistent workflow data as artificats 
+        uses: actions/upload-artifact@v2
+        with: 
+          name: github-actions-artifact
+          path: artifacts
+          
+# tmate session to Debug           
+      #- name: Setup tmate session
+      #  uses: mxschmitt/action-tmate@v3  
