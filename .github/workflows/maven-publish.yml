@@ -25,14 +25,15 @@ jobs:
         with:
           maven-version: 3.8.2
       
-      - uses: harmon758/postgresql-action@v1
-        with:
-          postgresql version: '11'     
-      - name: Docker inspect
-        run: docker ps
+      - name: Install PostgeSQL
+        run: sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt $(lsb_release -cs)-pgdg main" > /etc/apt/sources.list.d/pgdg.list'
+wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -  && sudo apt-get update && sudo apt-get -y install postgresql
+
       - name: 
-        run: apt-get install ping -y && ping localhost -p 5432
+        run: sudo apt-get -y install ping && ping -c 5 localhost -p 5432 
+        
       - name: Build with Maven
         run: mvn -B package --file POS_DayClose/pom.xml
+        
       - name: Build with Maven
         run: mvn -B package --file CustomerDetails/pom.xml
