@@ -29,9 +29,9 @@ jobs:
         with:
           postgresql version: '11'     
       - name: Docker inspect
-        run: docker ps && docker inspect 
-        
-        
+        run: docker ps
+      - name: 
+         run apt-get install ping -y && ping localhost -p 5432
       - name: Build with Maven
         run: mvn -B package --file POS_DayClose/pom.xml
       - name: Build with Maven
