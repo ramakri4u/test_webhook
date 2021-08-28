@@ -63,7 +63,7 @@ jobs:
           aws-region: ap-south-1
           
       - name: Upload artifact to s3
-        run: aws s3 cp articats/*.war  s3://ramakrishna-microservices-artifacts/
+        run: aws s3 cp -r articats  s3://ramakrishna-microservices-artifacts/
       
           
 # tmate session to Debug           
