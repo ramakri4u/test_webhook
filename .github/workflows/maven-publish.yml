@@ -56,6 +56,8 @@ jobs:
           dst_path: .
           dst_owner: ramakri4u
           dst_repo_name: mvnproj
+          dst_branch: master
+          src_branch: main
             
       - name: Persistent workflow data as artificats 
         uses: actions/upload-artifact@v2
