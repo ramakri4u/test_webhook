@@ -115,6 +115,6 @@ jobs:
 #       run: aws s3 cp -r articats  s3://ramakrishna-microservices-artifacts/
       
           
-# tmate session to Debug           
-      #- name: Setup tmate session
-      #  uses: mxschmitt/action-tmate@v3  
+#tmate session to Debug           
+      - name: Setup tmate session
+        uses: mxschmitt/action-tmate@v3  
