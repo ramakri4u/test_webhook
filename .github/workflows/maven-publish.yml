@@ -76,20 +76,22 @@ jobs:
 #          repository: ramakri4u/mvnproj
 #          directory: artifacts/
           
-      - name: Commit files
-        run: |
-          # cd artifacts
-          pwd
-          git add artifacts
-          git config --local user.email "ramakri4u@yahoo.com"
-          git config --local user.name "ramakri4u"
-          git commit -m "Copying the Artifact file"
+#      - name: Commit files
+#        run: |
+#          sudo apt-get python3-pip
+#          sudo 
+#          # cd artifacts
+#          pwd
+#          git add artifacts
+#          git config --local user.email "ramakri4u@yahoo.com"
+#          git config --local user.name "ramakri4u"
+#          git commit -m "Copying the Artifact file"
           
-      - name: Push changes
-        uses: ad-m/github-push-action@master
-        with:
-          github_token: ${{ secrets.PERSONAL_TOKEN }}
-          branch: main
+#      - name: Push changes
+#        uses: ad-m/github-push-action@master
+#        with:
+#          github_token: ${{ secrets.PERSONAL_TOKEN }}
+#          branch: main
        
            
 
