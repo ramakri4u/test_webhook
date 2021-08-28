@@ -47,6 +47,15 @@ jobs:
       #- name: Download Artifaction
       #  run: |
       #      POS_DayClose/target/*.war
+      
+      - name: Copy artifact to Repository where it builds dockerfile
+        uses: andstor/copycat-action@v3
+        with:
+          personal_token: ${{ secrets.PERSONAL_TOKEN }}
+          src_path: artifacts
+          dst_path: .
+          dst_owner: ramakri4u
+          dst_repo_name: mvnproj
             
       - name: Persistent workflow data as artificats 
         uses: actions/upload-artifact@v2
@@ -54,16 +63,19 @@ jobs:
           name: github-actions-artifact
           path: artifacts
           
+      
+      
+      
 ## AWS S3 Bucket 
 
-      - uses: aws-actions/configure-aws-credentials@v1
-        with:
-          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws-region: ap-south-1
+#      - uses: aws-actions/configure-aws-credentials@v1
+#        with:
+#          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+#         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+#         aws-region: ap-south-1
           
-      - name: Upload artifact to s3
-        run: aws s3 cp -r articats  s3://ramakrishna-microservices-artifacts/
+#     - name: Upload artifact to s3
+#       run: aws s3 cp -r articats  s3://ramakrishna-microservices-artifacts/
       
           
 # tmate session to Debug           
