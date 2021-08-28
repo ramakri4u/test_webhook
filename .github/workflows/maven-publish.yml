@@ -62,12 +62,8 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ap-south-1
           
-      - uses: shallwefootball/s3-upload-action@master
-        with:
-          aws_key_id: ${{ secrets.AWS_KEY_ID }}
-          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
-          aws_bucket: ${{ secrets.AWS_BUCKET }}
-          source_dir: artifacts
+      - name: Upload artifact to s3
+        run: aws s3 cp articats/*.war  s3://ramakrishna-microservices-artifacts/
       
           
 # tmate session to Debug           
