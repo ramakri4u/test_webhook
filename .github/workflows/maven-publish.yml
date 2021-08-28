@@ -48,24 +48,41 @@ jobs:
       #  run: |
       #      POS_DayClose/target/*.war
       
-      - name: Copy artifact to Repository where it builds dockerfile
-        uses: andstor/copycat-action@v3
+#      - name: Copy artifact to Repository where it builds dockerfile
+#        uses: andstor/copycat-action@v3
+#        with:
+#          personal_token: ${{ secrets.PERSONAL_TOKEN }}
+#          src_path: artifacts
+#          dst_path: .
+#          dst_owner: ramakri4u
+#          dst_repo_name: mvnproj
+#          dst_branch: master
+#          src_branch: main
+ 
+#      - name: Push artifact to github 
+#        run: | 
+#          cd articats 
+#          git add .
+#          git commit -m "Build artifacts"
+#          git push
+          
+      
+      - name: Commit & Push changes
+        uses: Andro999b/push@v1.3
         with:
-          personal_token: ${{ secrets.PERSONAL_TOKEN }}
-          src_path: artifacts
-          dst_path: .
-          dst_owner: ramakri4u
-          dst_repo_name: mvnproj
-          dst_branch: master
-          src_branch: main
-            
+          github_token: ${{ secrets.PERSONAL_TOKEN }}
+          author_email: ramakri4u@yahoo.com
+          repository: mvnproj
+          directory: artifacts
+          
+      
       - name: Persistent workflow data as artificats 
         uses: actions/upload-artifact@v2
         with: 
           name: github-actions-artifact
           path: artifacts
-      - name: Setup tmate session
-        uses: mxschmitt/action-tmate@v3  
+#      - name: Setup tmate session
+#        uses: mxschmitt/action-tmate@v3  
       
       
       
