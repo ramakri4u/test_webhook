@@ -78,7 +78,8 @@ jobs:
           
       - name: Commit files
         run: |
-          cd artifacts
+          # cd artifacts
+          pwd
           git add artifacts
           git config --local user.email "ramakri4u@yahoo.com"
           git config --local user.name "ramakri4u"
@@ -88,8 +89,8 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.PERSONAL_TOKEN }}
-          branch: master
-          repository: mvnproj
+          branch: main
+       
            
 
           
