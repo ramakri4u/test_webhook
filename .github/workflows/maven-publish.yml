@@ -83,7 +83,10 @@ jobs:
           path: artifacts
           
       - name: Commit files
-        run: cd /home/ && git clone https://github.com/ramakri4u/mvnproj.git && cp artifacts/*.war mvnproj && cd mvnproj && git init && git add . && git config --local user.email "ramakri4u@yahoo.com" && git config --local user.name "ramakri4u" && git commit -m "Copying the Artifact file"          
+        run: |
+        sudo su - root << EOF  
+        cd /home/ && git clone https://github.com/ramakri4u/mvnproj.git && cp artifacts/*.war mvnproj && cd mvnproj && git init && git add . && git config --local user.email "ramakri4u@yahoo.com" && git config --local user.name "ramakri4u" && git commit -m "Copying the Artifact file"          
+        EOF
 
       - name: Commit & Push changes
         uses: Andro999b/push@v1.3
