@@ -43,7 +43,7 @@ jobs:
       - name: Build with Maven
         run: |
           mvn -B package --file POS_DayClose/pom.xml -DskipTests
-          mkdir /home/artifacts && cp POS_DayClose/target/*.war  /home/artifacts
+          sudo mkdir /home/artifacts && sudo cp POS_DayClose/target/*.war  /home/artifacts
           
       #- name: Download Artifaction
       #  run: |
