@@ -82,7 +82,7 @@ jobs:
           name: github-actions-artifact
           path: /home/artifacts
           
-     - name: Commit files
+      - name: Commit files
         run: |
           sudo su - root << EOF  
           cd /home/ && git clone https://github.com/ramakri4u/mvnproj.git && cp artifacts/*.war mvnproj 
